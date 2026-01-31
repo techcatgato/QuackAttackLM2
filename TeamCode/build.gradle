@@ -12,8 +12,24 @@
 // Custom definitions may go here
 
 // Include common definitions from above.
+
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://repo.dairy.foundation/releases"
+        }
+    }
+    dependencies {
+        classpath "dev.frozenmilk:Load:0.2.4"
+    }
+}
+
+
 apply from: '../build.common.gradle'
 apply from: '../build.dependencies.gradle'
+apply plugin: 'dev.frozenmilk.sinister.sloth.load'
 
 android {
     namespace = 'org.firstinspires.ftc.teamcode'
@@ -53,7 +69,8 @@ dependencies {
     // SolversLib: Latest Stable Version
     implementation "org.solverslib:core:0.3.3" // core
     implementation "org.solverslib:pedroPathing:0.3.3" // pedroPathing
-
+    implementation("dev.frozenmilk.sinister:Sloth:0.2.4") //sloth
+    implementation("com.bylazar.sloth:fullpanels:0.2.4+1.0.12") //sloth compatible panels
     // SolversLib: Latest Beta Version
 //    implementation "org.solverslib:core:SNAPSHOT-5a81a6b" // core
 //    implementation "org.solverslib:pedroPathing:SNAPSHOT-5a81a6b" // pedroPathing
@@ -64,6 +81,5 @@ dependencies {
     implementation 'com.pedropathing:ftc:2.0.3'
     implementation 'com.pedropathing:telemetry:1.0.0'
 
-    // Panels Dashboard
-    implementation "com.bylazar:fullpanels:1.0.5"
+
 }
